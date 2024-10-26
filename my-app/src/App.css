@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto Flex", sans-serif;
+}
+
+nav {
+    display: flex;
+    height: 50px;
+    background: #7f7f81;
+    align-items: center;
+    padding: 0 0.5rem;
+    gap: 1.2rem;
+    color: white;
+}
+nav a{
+    text-decoration: none;
+    color: white;
+}
+.sidebar{
+    width: 550px;
+    overflow: auto;
+    background-color: rgb(245 245 245);
+}
+
+.title{
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+.icon{
+    font-size: 1.1rem;
+    background-color: rgb(104 191 104);
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+   text-align: center;
+   cursor: pointer;
+}
+.icon-delete{
+    font-size: 1.2rem;
+    color: rgb(190, 88, 88);
+    cursor: pointer;
+}
+ .date{
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.card{
+    padding: 1rem;
+    background-color: rgb(206, 233, 206);
+    margin: 1rem;
+    border-radius: 1rem;
+}
+
+.main{
+    border: 1px solid black;
+    width: 100%;
+    padding: 2.5rem;
+   
+}
+
+.container{
+    display: flex;
+    gap: 1rem;
+    margin: 1rem;
+    height: 570px;
+    overflow: auto;
+}
+
+.main .header{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+} 
+
+.main .card{
+    padding: 0.5rem;
+}
+
+.main .card{
+    background-color: rgb(243 214 214);
+}
+.main .icon{
+    background-color: rgb(221 162 176);
+}
+
+.main .form{
+    background-color: rgb(226 232 240);
+    display: flex;
+    align-items: center;
+    overflow-x:hidden;
+    justify-content: center;
+    padding: 2rem;
+}
+.main .form-control{
+    display: flex;
+    flex-direction: column;
+    
+}
+.main label{
+    margin: 1rem 0;
+}
+.main input{
+    width: 420px;
+    height: 32px;
+    border: none;
+    border-radius: 5px;
+    padding: 0 0.2rem ;
+}
+
+.main .button {   
+    text-align: center;
+}
+
+.main button{
+    margin-top: 1.5rem;
+    outline: none;
+    border: none;
+    background-color: rgb(104 191 104);
+    width: 120px;
+    height: 30px;
+    font-size: 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem;
+}
