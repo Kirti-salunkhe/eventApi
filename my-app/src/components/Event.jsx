@@ -1,47 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import { useAuth } from '../security/AuthContext'
-import { deleteEventApi, userEvents } from '../Api/UserApi'
+import React, { useEffect } from 'react'
+import { removeEventApi, userEventsApi } from '../Api/UserApi'
 
-export default function Event({selectedEvents,setSelectedEvents}) {
-  const authContext = useAuth()
-  const [events, setEvents] = useState()
+export default function Event({allEvents, setAllEvents}) {
+ 
+    const getAllEvent=async()=>{
+        const res= await userEventsApi()
+        setAllEvents(res.data)
+      }
 
+    useEffect(()=>{
+        getAllEvent()
+    },[])
 
-  const getAllEvents = async () => {
-    await userEvents().then(res => {
-        setSelectedEvents(res.data)
-    })
-}
+    const deleteEvent=async(eId)=>{
+       await removeEventApi(eId)
+        getAllEvent()
+    }
 
-  useEffect(() => {
-    getAllEvents()
-}, [])
-
-  const deleteEvent = async(id) => {
-    await deleteEventApi(id).then(res=>{
-        getAllEvents()
-    })
-  }
-
-  
-
-  console.log(events,selectedEvents)
   return (
     <>
-
-      <div className='main'>
-        <div className='header'>{selectedEvents ? <h2>Your Events</h2> : <h2>No events</h2>}</div>
-        {
-         selectedEvents && selectedEvents.map((e, index) => (
-            <div key={index} className='card'>
-              <div className='title'>
-                <h4>{e.name}</h4>
-                <h5 className='icon' onClick={()=>deleteEvent(e.id)}>-</h5>
-              </div>
-            </div>
-          ))
-        }
-      </div>
+        <div className="main">
+            <div className="header">{allEvents ? <h2>Your Events</h2>:<h2>No Events</h2>}</div>
+            {
+                allEvents && allEvents.map((e,index)=>(
+                    <div className="card" key={index}>
+                        <div className="title">
+                            <h4>{e.name}</h4>
+                            <h5 className="icon" onClick={()=>deleteEvent(e.id)}>-</h5>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
     </>
   )
 }
+

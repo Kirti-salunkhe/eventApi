@@ -1,29 +1,24 @@
-import React, { useContext, useState } from 'react'
-import { loginApi } from '../Api/UserApi'
-import { AuthContext, login, useAuth } from '../security/AuthContext'
+import React, { useState } from 'react'
+import { useAuth } from '../Security/AuthContext'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 
 export default function Login() {
-    const [loginData, setLoginData] = useState({})
-    const navigate = useNavigate()
-    const authContext = useAuth()
-    const [error, setError] = useState("")
+   const [loginData,setLoginData]=useState()
+   const authContext=useAuth()
+   const navigate=useNavigate()
 
-    const onHandleChange = (e) => {
-        setLoginData({ ...loginData, [e.target.name]: e.target.value })
-    }
+   const onHandleChange=(e)=>{
+        setLoginData({...loginData,[e.target.name]:e.target.value})
+   }
 
-    const onHandleSubmit = async (e) => {
+   const onHandleSubmit=async(e)=>{
         e.preventDefault()
-     
-        let role = await authContext.login(loginData)
-        console.log(authContext)
-        if (role != null) {
-            console.log(authContext);
-            role === "Admin" ? navigate("/admin") : navigate("/home")
-        }
-    }
+        await authContext.login(loginData).then((role)=>{
+            role==="Admin" ? navigate("/admin") : navigate("/home")
+        })
+   }
 
     return (
         <>
@@ -45,11 +40,7 @@ export default function Login() {
 
                     </form>
                 </div>
-
             </div></div>
-          
-
-
         </>
     )
 }
